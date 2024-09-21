@@ -204,7 +204,14 @@ export default function App() {
             setInitTialItemCount(6);
           }}
         >
-          <Text style={styles.filterText}>Vegetable</Text>
+          <Text
+            style={{
+              color: selectedBtn === "Vegetable" ? "white" : "blue",
+              fontWeight: "bold",
+            }}
+          >
+            Vegetable
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -219,7 +226,14 @@ export default function App() {
             setInitTialItemCount(5);
           }}
         >
-          <Text style={styles.filterText}>Seafood</Text>
+          <Text
+            style={{
+              color: selectedBtn === "Seafood" ? "white" : "blue",
+              fontWeight: "bold",
+            }}
+          >
+            Seafood
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
@@ -234,7 +248,14 @@ export default function App() {
             setInitTialItemCount(5);
           }}
         >
-          <Text style={styles.filterText}>Drink</Text>
+          <Text
+            style={{
+              color: selectedBtn === "Drink" ? "white" : "blue",
+              fontWeight: "bold",
+            }}
+          >
+            Drink
+          </Text>
         </TouchableOpacity>
       </View>
 
@@ -345,10 +366,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 40,
     padding: 10,
-  },
-  filterText: {
-    fontWeight: "bold",
-    color: "blue",
   },
   header: {
     flexDirection: "row",
