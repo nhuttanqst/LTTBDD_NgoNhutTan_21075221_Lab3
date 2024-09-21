@@ -62,6 +62,8 @@ export default function App({ navigation }) {
     }
   }, [key]);
 
+  const total = calculateTotal();
+
   return (
     <View style={{ flex: 1 }}>
       <View>
@@ -209,12 +211,12 @@ export default function App({ navigation }) {
             Total
           </Text>
           <Text style={{ fontSize: 30, fontWeight: "bold", color: "purple" }}>
-            ${calculateTotal()}
+            ${total}
           </Text>
         </View>
         <TouchableOpacity
           style={{
-            backgroundColor: "green",
+            backgroundColor: total === "0.00" ? "gray" : "green",
             borderRadius: 40,
             width: 240,
             height: 50,
@@ -224,7 +226,8 @@ export default function App({ navigation }) {
             alignSelf: "center",
             width: "100%",
           }}
-          onPress={() => showPaymentSuccessAlert(calculateTotal())}
+          onPress={() => total !== "0.00" && showPaymentSuccessAlert(total)}
+          disabled={total === "0.00"}
         >
           <Text style={{ fontSize: 20, color: "white" }}>Payment</Text>
         </TouchableOpacity>
