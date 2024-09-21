@@ -10,7 +10,7 @@ function BasketProvider({ children }) {
       name: "Apple",
       price: "28.00",
       image: require("./assets/Data/Image 101.png"),
-      sl: 1,
+      sl: 0,
     },
     {
       key: "2",
@@ -18,7 +18,7 @@ function BasketProvider({ children }) {
       name: "Pear",
       price: "28.00",
       image: require("./assets/Data/Image 102.png"),
-      sl: 2,
+      sl: 0,
     },
     {
       key: "3",
@@ -26,7 +26,7 @@ function BasketProvider({ children }) {
       name: "Coconut",
       price: "28.00",
       image: require("./assets/Data/Image 103.png"),
-      sl: 3,
+      sl: 0,
     },
     {
       key: "4",
@@ -34,7 +34,7 @@ function BasketProvider({ children }) {
       name: "Pear",
       price: "28.00",
       image: require("./assets/Data/Image 105.png"),
-      sl: 1,
+      sl: 0,
     },
     {
       key: "5",
@@ -42,7 +42,7 @@ function BasketProvider({ children }) {
       name: "Coconut",
       price: "28.00",
       image: require("./assets/Data/Image 106.png"),
-      sl: 2,
+      sl: 0,
     },
     {
       key: "6",
@@ -50,7 +50,7 @@ function BasketProvider({ children }) {
       name: "Coconut",
       price: "28.00",
       image: require("./assets/Data/Image 107.png"),
-      sl: 3,
+      sl: 0,
     },
     {
       key: "7",
@@ -58,7 +58,7 @@ function BasketProvider({ children }) {
       name: "Pear",
       price: "28.00",
       image: require("./assets/Data/Image 105.png"),
-      sl: 1,
+      sl: 0,
     },
 
     {
