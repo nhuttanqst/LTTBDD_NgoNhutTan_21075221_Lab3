@@ -1,153 +1,268 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, TextInput, FlatList } from 'react-native';
-import { useState } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  FlatList,
+  Alert,
+} from "react-native";
+import { useRoute } from "@react-navigation/native";
+import { useContext, useEffect } from "react";
+import { BasketContext } from "../BasketContext";
 
-export default function App({navigation}) {
-    const [data, setData] = useState([
-        {key: '1', type: 'Vegetable', name: 'Apple', price: '28.00', image: require('../assets/Data/Image 101.png'), sl: 1},
-        {key: '1', type: 'Vegetable', name: 'Pear', price: '28.00', image: require('../assets/Data/Image 102.png'), sl: 2},
-        {key: '1', type: 'Vegetable', name: 'Coconut', price: '28.00', image: require('../assets/Data/Image 103.png'), sl: 3},
-        {key: '1', type: 'Vegetable', name: 'Pear', price: '28.00', image: require('../assets/Data/Image 105.png'), sl: 1},
-        {key: '1', type: 'Vegetable', name: 'Coconut', price: '28.00', image: require('../assets/Data/Image 106.png'), sl: 2},
-        {key: '1', type: 'Vegetable', name: 'Coconut', price: '28.00', image: require('../assets/Data/Image 107.png'), sl: 3},
-        {key: '1', type: 'Vegetable', name: 'Pear', price: '28.00', image: require('../assets/Data/Image 105.png'), sl: 1},
+export default function App({ navigation }) {
+  const route = useRoute();
 
-        {key: '1', type: 'Seafood', name: 'Seafood 1', price: '28.00', image: require('../assets/Data/Image 95.png')},
-        {key: '1', type: 'Seafood', name: 'Seafood 2', price: '28.00', image: require('../assets/Data/Image 95.png')},
-        {key: '1', type: 'Seafood', name: 'Seafood 3', price: '28.00', image: require('../assets/Data/Image 95.png')},
-        {key: '1', type: 'Seafood', name: 'Seafood 4', price: '28.00', image: require('../assets/Data/Image 95.png')},
-        {key: '1', type: 'Seafood', name: 'Seafood 5', price: '28.00', image: require('../assets/Data/Image 95.png')},
-        
-        {key: '1', type: 'Drink', name: 'Drink 1', price: '28.00', image: require('../assets/Data/Image_96.png')},
-        {key: '1', type: 'Drink', name: 'Drink 2', price: '28.00', image: require('../assets/Data/Image_96.png')},
-        {key: '1', type: 'Drink', name: 'Drink 3', price: '28.00', image: require('../assets/Data/Image_96.png')},
-        {key: '1', type: 'Drink', name: 'Drink 4', price: '28.00', image: require('../assets/Data/Image_96.png')},
-        {key: '1', type: 'Drink', name: 'Drink 5', price: '28.00', image: require('../assets/Data/Image_96.png')},
-        {key: '1', type: 'Drink', name: 'Drink 6', price: '28.00', image: require('../assets/Data/Image_96.png')},
-    ]);
+  const { data, updateQuantity, decrementQuantity, resetQuantities } =
+    useContext(BasketContext);
 
-    const [type, setType] = useState('Vegetable');
-    const [selectedBtn, setSelectedBtn] = useState('Vegetable');
-    const [initialItemCount, setInitialItemCount] = useState(1);
-
-    return ( 
-        <ScrollView stickyHeaderIndices={[0, -1]}>
-            <View style={{
-                width: '100%',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                paddingHorizontal: 20,
-                paddingHorizontal: 10,
-                backgroundColor: 'white'
-            }}>
-                <TouchableOpacity
-                    onPress={() => {navigation.navigate("Screen_02")}}
-                >
-                    <Image source={require('../assets/Data/Image 183.png')}
-                        style={{
-                            width: 25,
-                            height: 25,
-                        }}
-                    />
-                </TouchableOpacity>
-            </View>
-            <View style={{
-                width: '100%',
-                justifyContent: 'center',
-                height: 50,
-                paddingHorizontal: 20
-            }}>
-                <Text style={{fontSize: 25, color: 'green'}}>My Basket</Text>
-            </View>
-
-            <View>
-                <FlatList 
-                    data={
-                        ((data.filter((item) => item.type == type)))
-                    }
-                    renderItem={({item}) => (
-                        <View style={{
-                            width: '100%',
-                            marginHorizontal: '2.5%',
-                            padding: 15,
-                            borderWidth: 1,
-                            flexDirection: 'row',
-                            alignItems: 'center'
-                        }}>
-                            <Image source={item.image}
-                                style={{width: 70, height: 70, marginRight: 10}}
-                                resizeMode='contain'
-                            />
-                            <View>
-                                <Text style={{fontSize: 25, fontWeight: 'bold', color: 'green'}}>{item.price}</Text>
-                                <Text style={{fontSize: 10, color: 'silver'}}>{item.name}</Text>
-                                <View style={{flexDirection: 'row'}}>
-                                    <Image 
-                                        source={require('../assets/Data/Image 180.png')}
-                                        style={{width: 15, height: 15, marginTop: 10}}
-                                    />
-                                    <Image 
-                                        source={require('../assets/Data/Image 180.png')}
-                                        style={{width: 15, height: 15, marginTop: 10}}
-                                    />
-                                    <Image 
-                                        source={require('../assets/Data/Image 180.png')}
-                                        style={{width: 15, height: 15, marginTop: 10}}
-                                    />
-                                    <Image 
-                                        source={require('../assets/Data/Image 180.png')}
-                                        style={{width: 15, height: 15, marginTop: 10}}
-                                    />
-                                    <Image 
-                                        source={require('../assets/Data/Image 180.png')}
-                                        style={{width: 15, height: 15, marginTop: 10}}
-                                    />
-                                </View>
-                            </View>
-                            <View style={{marginLeft: 140, flexDirection: 'row', alignItems: 'center'}}>
-                                <Image 
-                                    source={require('../assets/Data/Image 176.png')}
-                                    style={{width: 15, height: 15, marginRight: 10}}
-                                />
-                                <Text style={{fontSize: 15}}>{item.sl}</Text>
-                                <Image 
-                                    source={require('../assets/Data/Image 175.png')}
-                                    style={{width: 15, height: 15, marginRight: 10}}
-                                />
-                            </View>
-                        </View>
-                    )}
-                />
-            </View>
-            <View style={{justifyContent: 'center', width: '100%'}}>
-                    <View style={{flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 10}}>
-                        <Text style={{fontSize: 30}}>Total</Text>
-                        <Text style={{fontSize: 30}}>$320.00</Text>
-                    </View>
-                    <TouchableOpacity style={{
-                        backgroundColor: 'green',
-                        borderRadius: 40,
-                        width: 240,
-                        height: 50,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginLeft: 90,
-                        marginVertical: 20
-                    }}
-                        onPress={() => {navigation.navigate("Screen_02")}}
-                    >
-                        <Text style={{fontSize: 20, color: 'white'}}>Payment</Text>
-                    </TouchableOpacity>
-            </View>
-        </ScrollView>
+  const showPaymentSuccessAlert = (total) => {
+    Alert.alert(
+      "Payment Successful",
+      `Your payment of $${total} has been processed successfully.`,
+      [
+        {
+          text: "OK",
+          onPress: () => {
+            resetQuantities();
+            navigation.navigate("Screen_02");
+          },
+        },
+      ],
+      { cancelable: false }
     );
+  };
+
+  const calculateTotal = () => {
+    if (!Array.isArray(data) || data.length === 0) {
+      return "0.00";
+    }
+
+    return data
+      .reduce((total, item) => {
+        const quantity = parseFloat(item.sl);
+        const price = parseFloat(item.price);
+
+        if (isNaN(quantity) || isNaN(price)) {
+          return total;
+        }
+
+        const itemTotal = quantity * price;
+        return total + itemTotal;
+      }, 0)
+      .toFixed(2);
+  };
+
+  const { key } = !route.params ? 0 : route.params;
+  useEffect(() => {
+    if (key) {
+      updateQuantity(key);
+    }
+  }, [key]);
+
+  return (
+    <View style={{ flex: 1 }}>
+      <View>
+        <View style={style.tabBar}>
+          <TouchableOpacity onPress={() => navigation.navigate("Screen_02")}>
+            <Image
+              style={style.tabBarImage}
+              source={require("../assets/Data/Image 183.png")}
+            />
+          </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            width: "100%",
+            justifyContent: "center",
+            height: 50,
+            paddingHorizontal: 20,
+          }}
+        >
+          <Text style={{ fontSize: 25, color: "green", fontWeight: "bold" }}>
+            My Basket
+          </Text>
+        </View>
+      </View>
+      <ScrollView style={{ marginBottom: 170 }}>
+        <FlatList
+          data={data.filter((item) => item.sl > 0)}
+          keyExtractor={(item) => item.key}
+          renderItem={({ item }) => (
+            <View style={style.flatItem}>
+              <View
+                style={{
+                  width: "100%",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <View
+                  style={{ flexDirection: "row", justifyContent: "center" }}
+                >
+                  <Image
+                    source={item.image}
+                    style={style.flatItemImage}
+                    resizeMode="contain"
+                  />
+                  <View>
+                    <Text
+                      style={{
+                        fontSize: 25,
+                        fontWeight: "bold",
+                        color: "green",
+                      }}
+                    >
+                      ${item.price}
+                    </Text>
+                    <Text
+                      style={{ fontSize: 18, color: "gray", marginBottom: 7 }}
+                    >
+                      {item.name}
+                    </Text>
+                    <View style={{ flexDirection: "row" }}>
+                      <Image
+                        source={require("../assets/Data/Image 180.png")}
+                        style={style.startIcon}
+                      />
+                      <Image
+                        source={require("../assets/Data/Image 180.png")}
+                        style={style.startIcon}
+                      />
+                      <Image
+                        source={require("../assets/Data/Image 180.png")}
+                        style={style.startIcon}
+                      />
+                      <Image
+                        source={require("../assets/Data/Image 180.png")}
+                        style={style.startIcon}
+                      />
+                      <Image
+                        source={require("../assets/Data/Image 180.png")}
+                        style={style.startIcon}
+                      />
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <TouchableOpacity onPress={() => decrementQuantity(item.key)}>
+                    <Image
+                      source={require("../assets/Data/Image 176.png")}
+                      style={style.subAddIcon}
+                    />
+                  </TouchableOpacity>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontWeight: "bold",
+                      marginHorizontal: 5,
+                    }}
+                  >
+                    {item.sl}
+                  </Text>
+                  <TouchableOpacity onPress={() => updateQuantity(item.key)}>
+                    <Image
+                      source={require("../assets/Data/Image 175.png")}
+                      style={style.subAddIcon}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          )}
+          ListEmptyComponent={
+            <Text style={{ textAlign: "center", marginTop: 20 }}>
+              Shopping cart is empty
+            </Text>
+          }
+        />
+      </ScrollView>
+
+      <View
+        style={{
+          justifyContent: "center",
+          padding: 10,
+          marginTop: 20,
+          backgroundColor: "white",
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+        }}
+      >
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginTop: 10,
+          }}
+        >
+          <Text style={{ fontSize: 30, fontWeight: "bold", color: "purple" }}>
+            Total
+          </Text>
+          <Text style={{ fontSize: 30, fontWeight: "bold", color: "purple" }}>
+            ${calculateTotal()}
+          </Text>
+        </View>
+        <TouchableOpacity
+          style={{
+            backgroundColor: "green",
+            borderRadius: 40,
+            width: 240,
+            height: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            marginVertical: 20,
+            alignSelf: "center",
+            width: "100%",
+          }}
+          onPress={() => showPaymentSuccessAlert(calculateTotal())}
+        >
+          <Text style={{ fontSize: 20, color: "white" }}>Payment</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-})
+const style = StyleSheet.create({
+  flatItem: {
+    marginHorizontal: "2.5%",
+    padding: 15,
+    borderWidth: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 10,
+    borderStyle: "dashed",
+    backgroundColor: "white",
+  },
+  flatItemImage: {
+    width: 80,
+    height: 80,
+    marginRight: 10,
+  },
+  tabBar: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: "white",
+  },
+  startIcon: {
+    width: 15,
+    height: 15,
+  },
+  subAddIcon: {
+    width: 20,
+    height: 20,
+  },
+});
