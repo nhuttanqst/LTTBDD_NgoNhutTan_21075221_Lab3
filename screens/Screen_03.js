@@ -88,105 +88,104 @@ export default function App({ navigation }) {
           </Text>
         </View>
       </View>
-      <ScrollView style={{ marginBottom: 170 }}>
-        <FlatList
-          data={data.filter((item) => item.sl > 0)}
-          keyExtractor={(item) => item.key}
-          renderItem={({ item }) => (
-            <View style={style.flatItem}>
+
+      <FlatList
+        data={data.filter((item) => item.sl > 0)}
+        keyExtractor={(item) => item.key}
+        renderItem={({ item }) => (
+          <View style={style.flatItem}>
+            <View
+              style={{
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <View style={{ flexDirection: "row", justifyContent: "center" }}>
+                <Image
+                  source={item.image}
+                  style={style.flatItemImage}
+                  resizeMode="contain"
+                />
+                <View>
+                  <Text
+                    style={{
+                      fontSize: 25,
+                      fontWeight: "bold",
+                      color: "green",
+                    }}
+                  >
+                    ${item.price}
+                  </Text>
+                  <Text
+                    style={{ fontSize: 18, color: "gray", marginBottom: 7 }}
+                  >
+                    {item.name}
+                  </Text>
+                  <View style={{ flexDirection: "row" }}>
+                    <Image
+                      source={require("../assets/Data/Image 180.png")}
+                      style={style.startIcon}
+                    />
+                    <Image
+                      source={require("../assets/Data/Image 180.png")}
+                      style={style.startIcon}
+                    />
+                    <Image
+                      source={require("../assets/Data/Image 180.png")}
+                      style={style.startIcon}
+                    />
+                    <Image
+                      source={require("../assets/Data/Image 180.png")}
+                      style={style.startIcon}
+                    />
+                    <Image
+                      source={require("../assets/Data/Image 180.png")}
+                      style={style.startIcon}
+                    />
+                  </View>
+                </View>
+              </View>
               <View
                 style={{
-                  width: "100%",
                   flexDirection: "row",
+                  alignItems: "center",
                   justifyContent: "space-between",
                 }}
               >
-                <View
-                  style={{ flexDirection: "row", justifyContent: "center" }}
-                >
+                <TouchableOpacity onPress={() => decrementQuantity(item.key)}>
                   <Image
-                    source={item.image}
-                    style={style.flatItemImage}
-                    resizeMode="contain"
+                    source={require("../assets/Data/Image 176.png")}
+                    style={style.subAddIcon}
                   />
-                  <View>
-                    <Text
-                      style={{
-                        fontSize: 25,
-                        fontWeight: "bold",
-                        color: "green",
-                      }}
-                    >
-                      ${item.price}
-                    </Text>
-                    <Text
-                      style={{ fontSize: 18, color: "gray", marginBottom: 7 }}
-                    >
-                      {item.name}
-                    </Text>
-                    <View style={{ flexDirection: "row" }}>
-                      <Image
-                        source={require("../assets/Data/Image 180.png")}
-                        style={style.startIcon}
-                      />
-                      <Image
-                        source={require("../assets/Data/Image 180.png")}
-                        style={style.startIcon}
-                      />
-                      <Image
-                        source={require("../assets/Data/Image 180.png")}
-                        style={style.startIcon}
-                      />
-                      <Image
-                        source={require("../assets/Data/Image 180.png")}
-                        style={style.startIcon}
-                      />
-                      <Image
-                        source={require("../assets/Data/Image 180.png")}
-                        style={style.startIcon}
-                      />
-                    </View>
-                  </View>
-                </View>
-                <View
+                </TouchableOpacity>
+                <Text
                   style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
+                    fontSize: 18,
+                    fontWeight: "bold",
+                    marginHorizontal: 5,
                   }}
                 >
-                  <TouchableOpacity onPress={() => decrementQuantity(item.key)}>
-                    <Image
-                      source={require("../assets/Data/Image 176.png")}
-                      style={style.subAddIcon}
-                    />
-                  </TouchableOpacity>
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      fontWeight: "bold",
-                      marginHorizontal: 5,
-                    }}
-                  >
-                    {item.sl}
-                  </Text>
-                  <TouchableOpacity onPress={() => updateQuantity(item.key)}>
-                    <Image
-                      source={require("../assets/Data/Image 175.png")}
-                      style={style.subAddIcon}
-                    />
-                  </TouchableOpacity>
-                </View>
+                  {item.sl}
+                </Text>
+                <TouchableOpacity onPress={() => updateQuantity(item.key)}>
+                  <Image
+                    source={require("../assets/Data/Image 175.png")}
+                    style={style.subAddIcon}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
-          )}
-          ListEmptyComponent={
-            <Text style={{ textAlign: "center", marginTop: 20 }}>
-              Shopping cart is empty
-            </Text>
-          }
-        />
-      </ScrollView>
+          </View>
+        )}
+        ListEmptyComponent={
+          <Text style={{ textAlign: "center", marginTop: 20 }}>
+            Shopping cart is empty
+          </Text>
+        }
+        style={{ marginBottom: 200 }}
+        contentContainerStyle={{ paddingBottom: 300 }}
+      />
 
       <View
         style={{

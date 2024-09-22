@@ -278,55 +278,55 @@ export default function App() {
           </Text>
         </TouchableOpacity>
       </View>
-      <ScrollView style={styles.scrollView}>
-        <View>
-          {searchQuery.length !== 0 ? (
-            <FlatList
-              data={data.filter((item) =>
-                item.name.toLowerCase().includes(searchQuery.toLowerCase())
-              )}
-              keyExtractor={(item) => item.key}
-              renderItem={({ item }) => (
-                <View style={styles.flatItem}>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate("Screen_03")}
-                  >
-                    <Image
-                      source={item.image}
-                      resizeMode="contain"
-                      style={styles.image}
-                    />
-                  </TouchableOpacity>
-                  <Text style={styles.itemName}>{item.name}</Text>
-                </View>
-              )}
-              numColumns={2}
-            />
-          ) : (
-            <FlatList
-              data={showAll ? data : data.filter((item) => item.type === type)}
-              keyExtractor={(item) => item.key}
-              renderItem={({ item }) => (
-                <View style={styles.flatItem}>
-                  <TouchableOpacity
-                    onPress={() =>
-                      navigation.navigate("Screen_03", { key: item.key })
-                    }
-                  >
-                    <Image
-                      source={item.image}
-                      resizeMode="contain"
-                      style={styles.image}
-                    />
-                  </TouchableOpacity>
-                  <Text style={styles.itemName}>{item.name}</Text>
-                </View>
-              )}
-              numColumns={2}
-            />
-          )}
-        </View>
-      </ScrollView>
+      <View>
+        {searchQuery.length !== 0 ? (
+          <FlatList
+            data={data.filter((item) =>
+              item.name.toLowerCase().includes(searchQuery.toLowerCase())
+            )}
+            keyExtractor={(item) => item.key}
+            renderItem={({ item }) => (
+              <View style={styles.flatItem}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Screen_03")}
+                >
+                  <Image
+                    source={item.image}
+                    resizeMode="contain"
+                    style={styles.image}
+                  />
+                </TouchableOpacity>
+                <Text style={styles.itemName}>{item.name}</Text>
+              </View>
+            )}
+            numColumns={2}
+          />
+        ) : (
+          <FlatList
+            data={showAll ? data : data.filter((item) => item.type === type)}
+            keyExtractor={(item) => item.key}
+            renderItem={({ item }) => (
+              <View style={styles.flatItem}>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("Screen_03", { key: item.key })
+                  }
+                >
+                  <Image
+                    source={item.image}
+                    resizeMode="contain"
+                    style={styles.image}
+                  />
+                </TouchableOpacity>
+                <Text style={styles.itemName}>{item.name}</Text>
+              </View>
+            )}
+            numColumns={2}
+            style={{ marginBottom: 250 }}
+            contentContainerStyle={{ paddingBottom: 300 }}
+          />
+        )}
+      </View>
     </View>
   );
 }
@@ -381,9 +381,6 @@ const styles = StyleSheet.create({
   },
   seeAllText: {
     fontSize: 25,
-  },
-  scrollView: {
-    marginBottom: 250,
   },
   flatItem: {
     justifyContent: "center",
