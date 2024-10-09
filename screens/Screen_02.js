@@ -18,7 +18,7 @@ export default function App() {
       type: "Vegetable",
       name: "Apple",
       price: "28.00",
-      image: require("../assets/Data/Image 101.png"),
+      image: require("../assets/Data/Image101.png"),
       sl: 1,
     },
     {
@@ -26,7 +26,7 @@ export default function App() {
       type: "Vegetable",
       name: "Pear",
       price: "28.00",
-      image: require("../assets/Data/Image 102.png"),
+      image: require("../assets/Data/Image102.png"),
       sl: 2,
     },
     {
@@ -34,7 +34,7 @@ export default function App() {
       type: "Vegetable",
       name: "Coconut",
       price: "28.00",
-      image: require("../assets/Data/Image 103.png"),
+      image: require("../assets/Data/Image103.png"),
       sl: 3,
     },
     {
@@ -42,7 +42,7 @@ export default function App() {
       type: "Vegetable",
       name: "Pear",
       price: "28.00",
-      image: require("../assets/Data/Image 105.png"),
+      image: require("../assets/Data/Image105.png"),
       sl: 1,
     },
     {
@@ -50,7 +50,7 @@ export default function App() {
       type: "Vegetable",
       name: "Coconut",
       price: "28.00",
-      image: require("../assets/Data/Image 106.png"),
+      image: require("../assets/Data/Image106.png"),
       sl: 2,
     },
     {
@@ -58,7 +58,7 @@ export default function App() {
       type: "Vegetable",
       name: "Coconut",
       price: "28.00",
-      image: require("../assets/Data/Image 107.png"),
+      image: require("../assets/Data/Image107.png"),
       sl: 3,
     },
     {
@@ -66,7 +66,7 @@ export default function App() {
       type: "Vegetable",
       name: "Pear",
       price: "28.00",
-      image: require("../assets/Data/Image 105.png"),
+      image: require("../assets/Data/Image105.png"),
       sl: 1,
     },
 
@@ -75,35 +75,35 @@ export default function App() {
       type: "Seafood",
       name: "Seafood 1",
       price: "28.00",
-      image: require("../assets/Data/Image 95.png"),
+      image: require("../assets/Data/Image95.png"),
     },
     {
       key: "9",
       type: "Seafood",
       name: "Seafood 2",
       price: "28.00",
-      image: require("../assets/Data/Image 95.png"),
+      image: require("../assets/Data/Image95.png"),
     },
     {
       key: "10",
       type: "Seafood",
       name: "Seafood 3",
       price: "28.00",
-      image: require("../assets/Data/Image 95.png"),
+      image: require("../assets/Data/Image95.png"),
     },
     {
       key: "11",
       type: "Seafood",
       name: "Seafood 4",
       price: "28.00",
-      image: require("../assets/Data/Image 95.png"),
+      image: require("../assets/Data/Image95.png"),
     },
     {
       key: "12",
       type: "Seafood",
       name: "Seafood 5",
       price: "28.00",
-      image: require("../assets/Data/Image 95.png"),
+      image: require("../assets/Data/Image95.png"),
     },
 
     {
@@ -166,13 +166,13 @@ export default function App() {
           <TouchableOpacity onPress={() => navigation.navigate("Screen_01")}>
             <Image
               style={styles.tabBarImage}
-              source={require("../assets/Data/Image 183.png")}
+              source={require("../assets/Data/Image183.png")}
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("Screen_03")}>
             <Image
               style={styles.tabBarImage}
-              source={require("../assets/Data/Image 182.png")}
+              source={require("../assets/Data/Image182.png")}
             />
           </TouchableOpacity>
         </View>
